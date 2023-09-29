@@ -39,4 +39,5 @@ model Review {
 
   authorName String
   text       String
+  images     String[]
 }
