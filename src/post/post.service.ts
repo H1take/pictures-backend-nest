@@ -1,6 +1,6 @@
-import {BadRequestException, Injectable} from '@nestjs/common';
-import {PrismaService} from "../prisma.service";
-import {PostDto, UpdatePostDto} from "./dto/post.dto";
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma.service';
+import { PostDto, UpdatePostDto } from './dto/post.dto';
 
 @Injectable()
 export class PostService {
@@ -9,8 +9,8 @@ export class PostService {
   async getPostsByCategory(param: { category: string }) {
     const posts = await this.prisma.post.findMany({
       where: {
-        category: param.category
-      }
+        category: param.category,
+      },
     });
 
     return posts;
@@ -19,16 +19,18 @@ export class PostService {
   async createNewPost(dto: PostDto) {
     const post = await this.prisma.post.create({
       data: {
-        title: dto.title,
-        text: dto.text,
+        titleRu: dto.titleRu,
+        titleEng: dto.titleEng,
+        textRu: dto.textRu,
+        textEng: dto.textEng,
         images: dto.images,
         imageTitle: dto.imageTitle,
-        category: dto.category
-      }
+        category: dto.category,
+      },
     });
 
     if (!post) {
-      throw new BadRequestException("Cannot create new post!");
+      throw new BadRequestException('Cannot create new post!');
     }
 
     return post;
@@ -37,19 +39,21 @@ export class PostService {
   async updatePost(dto: UpdatePostDto) {
     const post = await this.prisma.post.update({
       where: {
-        id: dto.id
+        id: dto.id,
       },
       data: {
-        title: dto.title,
+        titleRu: dto.titleRu,
+        titleEng: dto.titleEng,
         category: dto.category,
-        text: dto.text,
+        textRu: dto.textRu,
+        textEng: dto.textEng,
         images: dto.images,
-        imageTitle: dto.imageTitle
-      }
+        imageTitle: dto.imageTitle,
+      },
     });
 
     if (!post) {
-      throw new BadRequestException("Cannot update post!");
+      throw new BadRequestException('Cannot update post!');
     }
 
     return post;

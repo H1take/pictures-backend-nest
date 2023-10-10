@@ -1,38 +1,50 @@
-import {IsNumber, IsString} from "class-validator";
+import { IsArray, IsNumber, IsString } from 'class-validator';
 
 export class PostDto {
-    @IsString()
-    title: string;
+  @IsString()
+  titleRu: string;
 
-    @IsString()
-    imageTitle: string;
+  @IsString()
+  titleEng: string;
 
-    @IsString()
-    text: string;
+  @IsString()
+  imageTitle: string;
 
-    @IsString()
-    category: string;
+  @IsString()
+  textRu: string;
 
-    @IsString()
-    images: string;
+  @IsString()
+  textEng: string;
+
+  @IsString()
+  category: string;
+
+  @IsArray()
+  images: string[];
 }
 
 export class UpdatePostDto {
-    @IsNumber()
-    id: number;
+  @IsNumber()
+  id: number;
 
-    @IsString()
-    title: string;
+  @IsString()
+  titleRu: string;
 
-    @IsString()
-    imageTitle: string;
+  @IsString()
+  titleEng: string;
 
-    @IsString()
-    text: string;
+  @IsString()
+  imageTitle: string;
 
-    @IsString()
-    category: string;
+  @IsString()
+  textRu: string;
 
-    @IsString()
-    images: string;
+  @IsString()
+  textEng: string;
+
+  @IsString()
+  category: string;
+
+  @IsArray()
+  images: string[];
 }
