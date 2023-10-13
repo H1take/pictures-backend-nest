@@ -58,4 +58,14 @@ export class PostService {
 
     return post;
   }
+
+  async deletePost(param: { postId: string }) {
+    const post = await this.prisma.post.delete({
+      where: {
+        id: +param.postId,
+      },
+    });
+
+    return post;
+  }
 }
